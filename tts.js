@@ -30,13 +30,7 @@ function textToSpeech(accessToken, text) {
         .txt(text)
         .end();
 
-    // https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/language-support
-    // https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/quickstart-nodejs-text-to-speech
-    // https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/js-node
-    // https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/quickstart-java-android
-    // https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/quickstart-objectivec-ios
-    // https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/rest-apis#audio-outputs
-    // npm install request readline-sync xmlbuilder request-promise
+
     let xml_body2 = xmlbuilder.create('speak')
         .att('version', '1.0')
         .att('xml:lang', 'zh-HK')
