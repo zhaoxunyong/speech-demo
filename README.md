@@ -8,6 +8,7 @@
 - https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/quickstart-java-android
 - https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/quickstart-objectivec-ios
 - https://docs.microsoft.com/zh-hk/azure/cognitive-services/speech-service/rest-apis#audio-outputs
+- https://docs.microsoft.com/zh-tw/azure/cognitive-services/speech-service/speech-synthesis-markup
 
 ## Install
 

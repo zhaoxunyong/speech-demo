@@ -33,15 +33,20 @@ function textToSpeech(accessToken, text) {
 
     let xml_body2 = xmlbuilder.create('speak')
         .att('version', '1.0')
+        .att('xmlns', 'http://www.w3.org/2001/10/synthesis')
         .att('xml:lang', 'zh-HK')
         .ele('voice')
-        .att('xml:lang', 'zh-HK')
         .att('name', 'Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)')
+        // .up()
+        .ele('prosody')
+        .att('rate','+50.00%')
+        .att('volume','+20.00%')
+        .att('contour','(80%,+20%) (90%,+30%)')
         .txt(text)
-        .end();
+        .end({ pretty: true});
     // Convert the XML into a string to send in the TTS request.
-    let body = xml_body2.toString();
-
+    let body = xml_body2.replace(/&lt;/mg,'<').replace(/&gt;/mg,'>').toString();
+    console.log(body)
     let options = {
         method: 'POST',
         baseUrl: 'https://southeastasia.tts.speech.microsoft.com/',
