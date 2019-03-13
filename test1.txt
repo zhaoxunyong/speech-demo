@@ -1,0 +1,6 @@
+All the terms of the following Loan Agreement<break time="1000ms" />, in particular the terms in relation to repayment, namely<break time="1000ms" />,
+(1)    the interest rate of 58.00%  per annum and the total amount of HK$11631.96 as interest payable under the Loan Agreement<break time="1000ms" />;
+(2)    HK$11139.35 being the total amount of the 1st to 23rd repayments<break time="1000ms" /> (repayment amount of each installment depends on the number of days within that month)<break time="1000ms" /> and HK$10492.61 being amount of the last repayment<break time="1000ms" /> (including principal loan amount HK$10000.00 and monthly interest HK$492.61)<break time="1000ms" />, periodically and in total by 24 installments<break time="1000ms" />, under the agreement;
+(3)    the possible consequences for any default in repayment, including<break time="1000ms" /> –
+(a)    the taking into possession and sale of any security involved<break time="1000ms" /> (including the property charged, if any); 
+(b)   any overriding right of the money lender to demand an immediate repayment.

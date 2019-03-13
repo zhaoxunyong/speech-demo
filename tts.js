@@ -4,7 +4,8 @@ const xmlbuilder = require('xmlbuilder');
 const rp = require('request-promise');
 const fs = require('fs');
 const readline = require('readline-sync');
-
+// const text = fs.readFileSync('./test1.txt', 'utf8');
+const text = fs.readFileSync('./test2.txt', 'utf8');
 
 // Gets an access token.
 function getAccessToken(subscriptionKey) {
@@ -25,15 +26,20 @@ function textToSpeech(accessToken, text) {
         .att('version', '1.0')
         .att('xml:lang', 'en-us')
         .ele('voice')
-        .att('xml:lang', 'en-us')
+        // .att('xml:lang', 'en-us')
         .att('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
         .txt(text)
+        // .up()
+        .ele('prosody')
+        .att('rate','+50.00%')
+        .att('volume','+20.00%')
+        .att('contour','(80%,+20%) (90%,+30%)')
         .end();
 
 
     let xml_body2 = xmlbuilder.create('speak')
         .att('version', '1.0')
-        .att('xmlns', 'http://www.w3.org/2001/10/synthesis')
+        // .att('xmlns', 'http://www.w3.org/2001/10/synthesis')
         .att('xml:lang', 'zh-HK')
         .ele('voice')
         .att('name', 'Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)')
@@ -85,7 +91,6 @@ async function main() {
     };
     // Prompts the user to input text.
     // const text = readline.question('What would you like to convert to speech? ');
-    const text = fs.readFileSync('/Users/zxy/Downloads/test.txt', 'utf8');
     try {
         const accessToken = await getAccessToken(subscriptionKey);
         await textToSpeech(accessToken, text);
