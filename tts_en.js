@@ -5,7 +5,7 @@ const rp = require('request-promise');
 const fs = require('fs');
 const readline = require('readline-sync');
 // const text = fs.readFileSync('./test1.txt', 'utf8');
-const text = fs.readFileSync('./test2.txt', 'utf8');
+const text = fs.readFileSync('./test_en.txt', 'utf8');
 
 // Gets an access token.
 function getAccessToken(subscriptionKey) {
@@ -22,7 +22,7 @@ function getAccessToken(subscriptionKey) {
 // Converts text to speech using the input from readline.
 function textToSpeech(accessToken, text) {
     // Create the SSML request.
-    let xml_body1 = xmlbuilder.create('speak')
+    let xml_body = xmlbuilder.create('speak')
         .att('version', '1.0')
         .att('xml:lang', 'en-us')
         .ele('voice')
@@ -30,29 +30,14 @@ function textToSpeech(accessToken, text) {
         .att('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
         .txt(text)
         // .up()
-        .ele('prosody')
-        .att('rate','+50.00%')
-        .att('volume','+20.00%')
-        .att('contour','(80%,+20%) (90%,+30%)')
-        .end();
-
-
-    let xml_body2 = xmlbuilder.create('speak')
-        .att('version', '1.0')
-        // .att('xmlns', 'http://www.w3.org/2001/10/synthesis')
-        .att('xml:lang', 'zh-HK')
-        .ele('voice')
-        .att('name', 'Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)')
-        // .up()
-        .ele('prosody')
-        .att('rate','+50.00%')
-        .att('volume','+20.00%')
-        .att('contour','(80%,+20%) (90%,+30%)')
-        .txt(text)
+        // .ele('prosody')
+        // .att('rate','+50.00%')
+        // .att('volume','+20.00%')
+        // .att('contour','(80%,+20%) (90%,+30%)')
         .end({ pretty: true});
     // Convert the XML into a string to send in the TTS request.
-    let body = xml_body2.replace(/&lt;/mg,'<').replace(/&gt;/mg,'>').toString();
-    console.log(body)
+    let body = xml_body.replace(/&lt;/mg,'<').replace(/&gt;/mg,'>').toString();
+    // console.log(body)
     let options = {
         method: 'POST',
         baseUrl: 'https://southeastasia.tts.speech.microsoft.com/',
@@ -70,7 +55,7 @@ function textToSpeech(accessToken, text) {
     let request = rp(options)
         .on('response', (response) => {
             if (response.statusCode === 200) {
-                request.pipe(fs.createWriteStream('/Users/zxy/Downloads/xwallet/Danny_Apollo.mp3'));
+                request.pipe(fs.createWriteStream('./en.mp3'));
                 console.log('\nYour file is ready.\n')
             }
         });
